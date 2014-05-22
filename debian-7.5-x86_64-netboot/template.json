@@ -75,7 +75,7 @@
             "boot_command": [
                 "<esc><wait>",
                 "install <wait>",
-                "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg <wait>",
+                "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
                 "debian-installer=en_US <wait>",
                 "auto <wait>",
                 "locale=en_US <wait>",
@@ -91,7 +91,7 @@
             ],
             "boot_wait": "10s",
             "disk_size": 20480,
-            "guest_os_type": "Debian_64",
+            "guest_os_type": "debian6-64",
             "http_directory": "http",
             "iso_checksum": "e80ceb12a5d54991624aa91694ac7cdc",
             "iso_checksum_type": "md5",
