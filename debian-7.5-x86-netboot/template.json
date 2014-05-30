@@ -4,6 +4,7 @@
             "type": "shell",
             "scripts": [
                 "scripts/base.sh",
+                "scripts/parallels.sh",
                 "scripts/virtualbox.sh",
                 "scripts/vmware.sh",
                 "scripts/vagrant.sh",
@@ -12,6 +13,9 @@
                 "scripts/zerodisk.sh"
             ],
             "override": {
+                "parallels-iso": {
+                    "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+                },
                 "virtualbox-iso": {
                     "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
                 },
@@ -108,6 +112,46 @@
                 "numvcpus": "1",
                 "cpuid.coresPerSocket": "1"
             }
+        },
+        {
+            "type": "parallels-iso",
+            "boot_command": [
+                "<esc><wait>",
+                "install <wait>",
+                "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
+                "debian-installer=en_US <wait>",
+                "auto <wait>",
+                "locale=en_US <wait>",
+                "kbd-chooser/method=us <wait>",
+                "netcfg/get_hostname={{ .Name }} <wait>",
+                "netcfg/get_domain=vagrantup.com <wait>",
+                "fb=false <wait>",
+                "debconf/frontend=noninteractive <wait>",
+                "console-setup/ask_detect=false <wait>",
+                "console-keymaps-at/keymap=us <wait>",
+                "keyboard-configuration/xkb-keymap=us <wait>",
+                "<enter><wait>"
+            ],
+            "boot_wait": "10s",
+            "disk_size": 20480,
+            "guest_os_type": "linux",
+            "guest_os_distribution": "debian",
+            "http_directory": "http",
+            "iso_checksum": "d57e91e2965ca7da0d1ab43fd150d2cf",
+            "iso_checksum_type": "md5",
+            "iso_url": "http://mirror.rackspace.com/debian/dists/stable/main/installer-i386/current/images/netboot/mini.iso",
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "ssh_port": 22,
+            "ssh_wait_timeout": "10000s",
+            "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
+            "parallels_tools_mode": "upload",
+            "parallels_tools_guest_path": "prl-tools.iso",
+            "parallels_tools_host_path": "/Applications/Parallels Desktop.app/Contents/Resources/Tools/prl-tools-lin.iso",
+            "prlctl": [
+                ["set", "{{.Name}}", "--memsize", "512"],
+                ["set", "{{.Name}}", "--cpus", "1"]
+            ]
         }
     ],
     "post-processors": [
