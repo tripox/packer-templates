@@ -134,8 +134,7 @@
             ],
             "boot_wait": "10s",
             "disk_size": 20480,
-            "guest_os_type": "linux",
-            "guest_os_distribution": "debian",
+            "guest_os_type": "debian",
             "http_directory": "http",
             "iso_checksum": "e80ceb12a5d54991624aa91694ac7cdc",
             "iso_checksum_type": "md5",
@@ -146,8 +145,7 @@
             "ssh_wait_timeout": "10000s",
             "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
             "parallels_tools_mode": "upload",
-            "parallels_tools_guest_path": "prl-tools.iso",
-            "parallels_tools_host_path": "/Applications/Parallels Desktop.app/Contents/Resources/Tools/prl-tools-lin.iso",
+            "parallels_tools_flavor": "lin",
             "prlctl": [
                 ["set", "{{.Name}}", "--memsize", "768"],
                 ["set", "{{.Name}}", "--cpus", "2"]
