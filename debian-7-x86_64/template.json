@@ -49,7 +49,7 @@
             "disk_size": 20480,
             "guest_os_type": "Debian_64",
             "http_directory": "http",
-            "iso_checksum": "e80ceb12a5d54991624aa91694ac7cdc",
+            "iso_checksum": "afa217cf0cf5a3e44ab02532e1d767f0",
             "iso_checksum_type": "md5",
             "iso_url": "http://mirror.rackspace.com/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso",
             "ssh_username": "vagrant",
@@ -60,8 +60,8 @@
             "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
             "virtualbox_version_file": ".vbox_version",
             "vboxmanage": [
-                ["modifyvm", "{{.Name}}", "--memory", "768"],
-                ["modifyvm", "{{.Name}}", "--cpus", "2"]
+                ["modifyvm", "{{.Name}}", "--memory", "2048"],
+                ["modifyvm", "{{.Name}}", "--cpus", "4"]
             ]
         },
         {
@@ -87,7 +87,7 @@
             "disk_size": 20480,
             "guest_os_type": "debian6-64",
             "http_directory": "http",
-            "iso_checksum": "e80ceb12a5d54991624aa91694ac7cdc",
+            "iso_checksum": "afa217cf0cf5a3e44ab02532e1d767f0",
             "iso_checksum_type": "md5",
             "iso_url": "http://mirror.rackspace.com/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso",
             "skip_compaction": true,
@@ -98,8 +98,8 @@
             "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
             "tools_upload_flavor": "linux",
             "vmx_data": {
-                "memsize": "768",
-                "numvcpus": "2",
+                "memsize": "2048",
+                "numvcpus": "4",
                 "cpuid.coresPerSocket": "1"
             }
         },
@@ -126,7 +126,7 @@
             "disk_size": 20480,
             "guest_os_type": "debian",
             "http_directory": "http",
-            "iso_checksum": "e80ceb12a5d54991624aa91694ac7cdc",
+            "iso_checksum": "afa217cf0cf5a3e44ab02532e1d767f0",
             "iso_checksum_type": "md5",
             "iso_url": "http://mirror.rackspace.com/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso",
             "ssh_username": "vagrant",
@@ -137,8 +137,8 @@
             "parallels_tools_mode": "upload",
             "parallels_tools_flavor": "lin",
             "prlctl": [
-                ["set", "{{.Name}}", "--memsize", "768"],
-                ["set", "{{.Name}}", "--cpus", "2"]
+                ["set", "{{.Name}}", "--memsize", "2048"],
+                ["set", "{{.Name}}", "--cpus", "4"]
             ]
         }
     ],
