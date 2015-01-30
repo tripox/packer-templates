@@ -13,13 +13,13 @@
             ],
             "override": {
                 "parallels-iso": {
-                    "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'"
+                    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
                 },
                 "virtualbox-iso": {
-                    "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'"
+                    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
                 },
                 "vmware-iso": {
-                    "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'"
+                    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
                 }
             }
         }
@@ -34,9 +34,9 @@
             "disk_size": 20480,
             "guest_os_type": "RedHat_64",
             "http_directory": "http",
-            "iso_checksum": "939fd1d87c11ffe7795324438b85adfb",
+            "iso_checksum": "eb3c8be6ab668e6d83a118323a789e6c",
             "iso_checksum_type": "md5",
-            "iso_url": "http://mirror.rackspace.com/CentOS/6.5/isos/x86_64/CentOS-6.5-x86_64-netinstall.iso",
+            "iso_url": "http://mirror.rackspace.com/CentOS/6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "ssh_port": 22,
@@ -45,8 +45,8 @@
             "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
             "virtualbox_version_file": ".vbox_version",
             "vboxmanage": [
-                ["modifyvm", "{{.Name}}", "--memory", "768"],
-                ["modifyvm", "{{.Name}}", "--cpus", "2"]
+                ["modifyvm", "{{.Name}}", "--memory", "2048"],
+                ["modifyvm", "{{.Name}}", "--cpus", "4"]
             ]
         },
         {
@@ -58,9 +58,9 @@
             "disk_size": 20480,
             "guest_os_type": "rhel6-64",
             "http_directory": "http",
-            "iso_checksum": "939fd1d87c11ffe7795324438b85adfb",
+            "iso_checksum": "eb3c8be6ab668e6d83a118323a789e6c",
             "iso_checksum_type": "md5",
-            "iso_url": "http://mirror.rackspace.com/CentOS/6.5/isos/x86_64/CentOS-6.5-x86_64-netinstall.iso",
+            "iso_url": "http://mirror.rackspace.com/CentOS/6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
             "skip_compaction": true,
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
@@ -69,8 +69,8 @@
             "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'",
             "tools_upload_flavor": "linux",
             "vmx_data": {
-                "memsize": "768",
-                "numvcpus": "2",
+                "memsize": "2048",
+                "numvcpus": "4",
                 "cpuid.coresPerSocket": "1"
             }
         },
@@ -83,9 +83,9 @@
             "disk_size": 20480,
             "guest_os_type": "centos",
             "http_directory": "http",
-            "iso_checksum": "939fd1d87c11ffe7795324438b85adfb",
+            "iso_checksum": "eb3c8be6ab668e6d83a118323a789e6c",
             "iso_checksum_type": "md5",
-            "iso_url": "http://mirror.rackspace.com/CentOS/6.5/isos/x86_64/CentOS-6.5-x86_64-netinstall.iso",
+            "iso_url": "http://mirror.rackspace.com/CentOS/6/isos/x86_64/CentOS-6.6-x86_64-minimal.iso",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "ssh_port": 22,
@@ -94,12 +94,15 @@
             "parallels_tools_mode": "upload",
             "parallels_tools_flavor": "lin",
             "prlctl": [
-                ["set", "{{.Name}}", "--memsize", "768"],
-                ["set", "{{.Name}}", "--cpus", "2"]
+                ["set", "{{.Name}}", "--memsize", "2048"],
+                ["set", "{{.Name}}", "--cpus", "4"]
             ]
         }
     ],
     "post-processors": [
-        "vagrant"
+        {
+          "type": "vagrant",
+          "compression_level": 9
+        }
     ]
 }
