@@ -1,9 +1,11 @@
 #!/bin/bash
 
+perl -p -i -e 's#http://us.archive.ubuntu.com/ubuntu#http://ftp.utexas.edu/ubuntu/#gi' /etc/apt/sources.list
+
 # Update the box
-apt-get -y update >/dev/null
-apt-get -y upgrade >/dev/null
-apt-get -y install facter linux-headers-$(uname -r) build-essential zlib1g-dev libssl-dev libreadline-gplv2-dev curl unzip >/dev/null
+apt-get -y update
+apt-get -y upgrade
+apt-get -y install facter linux-headers-$(uname -r) build-essential zlib1g-dev libssl-dev libreadline-gplv2-dev curl unzip
 
 # Set up sudo
 echo 'vagrant ALL=NOPASSWD:ALL' > /etc/sudoers.d/vagrant

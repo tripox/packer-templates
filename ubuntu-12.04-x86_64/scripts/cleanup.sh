@@ -1,5 +1,7 @@
 #!/bin/bash
 
+perl -p -i -e 's#http://ftp.utexas.edu/ubuntu/#http://us.archive.ubuntu.com/ubuntu#gi' /etc/apt/sources.list
+
 chmod 440 /etc/sudoers.d/vagrant
 
 # Removing leftover leases and persistent rules
