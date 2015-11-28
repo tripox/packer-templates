@@ -1,4 +1,9 @@
 {
+    "variables": {
+        "debian_version": "7.9.0",
+        "memory": "2048",
+        "cpu": "4"
+    },
     "provisioners": [
         {
             "type": "shell",
@@ -46,12 +51,11 @@
                 "<enter><wait>"
             ],
             "boot_wait": "10s",
-            "disk_size": 20480,
+            "disk_size": 32768,
             "guest_os_type": "Debian_64",
             "http_directory": "http",
-            "iso_checksum": "afa217cf0cf5a3e44ab02532e1d767f0",
-            "iso_checksum_type": "md5",
-            "iso_url": "http://mirror.rackspace.com/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso",
+            "iso_checksum_type": "none",
+            "iso_url": "http://cdimage.debian.org/cdimage/archive/{{user `debian_version`}}/amd64/iso-cd/debian-{{user `debian_version`}}-amd64-netinst.iso",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "ssh_port": 22,
@@ -60,8 +64,8 @@
             "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
             "virtualbox_version_file": ".vbox_version",
             "vboxmanage": [
-                ["modifyvm", "{{.Name}}", "--memory", "2048"],
-                ["modifyvm", "{{.Name}}", "--cpus", "4"]
+                ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
+                ["modifyvm", "{{.Name}}", "--cpus", "{{user `cpu`}}"]
             ]
         },
         {
@@ -84,13 +88,11 @@
                 "<enter><wait>"
             ],
             "boot_wait": "10s",
-            "disk_size": 20480,
+            "disk_size": 32768,
             "guest_os_type": "debian6-64",
             "http_directory": "http",
-            "iso_checksum": "afa217cf0cf5a3e44ab02532e1d767f0",
-            "iso_checksum_type": "md5",
-            "iso_url": "http://mirror.rackspace.com/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso",
-            "skip_compaction": true,
+            "iso_checksum_type": "none",
+            "iso_url": "http://cdimage.debian.org/cdimage/archive/{{user `debian_version`}}/amd64/iso-cd/debian-{{user `debian_version`}}-amd64-netinst.iso",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "ssh_port": 22,
@@ -123,12 +125,11 @@
                 "<enter><wait>"
             ],
             "boot_wait": "10s",
-            "disk_size": 20480,
+            "disk_size": 32768,
             "guest_os_type": "debian",
             "http_directory": "http",
-            "iso_checksum": "afa217cf0cf5a3e44ab02532e1d767f0",
-            "iso_checksum_type": "md5",
-            "iso_url": "http://mirror.rackspace.com/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso",
+            "iso_checksum_type": "none",
+            "iso_url": "http://cdimage.debian.org/cdimage/archive/{{user `debian_version`}}/amd64/iso-cd/debian-{{user `debian_version`}}-amd64-netinst.iso",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "ssh_port": 22,
