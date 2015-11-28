@@ -16,9 +16,9 @@ If you want to build only virtualbox or vmware.
     $ packer build -only=vmware-iso template.json
     $ packer build -only=parallels-iso template.json
 
-Parallel builds can be run on 0.6.0 or latest packer version.
+VMWare requires VMware OVF Tool installed. Simply create a VM using VMWare GUI.
 
-    $ packer build -parallel=true template.json
+Parallel builds can be run on 0.6.0 or latest packer version and requires Parallels Virtualization SDK installed.
 
 # Credit
 
