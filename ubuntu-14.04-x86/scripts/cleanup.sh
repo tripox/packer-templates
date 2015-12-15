@@ -1,6 +1,5 @@
 #!/bin/bash
 
-perl -p -i -e 's#http://ftp.utexas.edu/ubuntu/#http://us.archive.ubuntu.com/ubuntu#gi' /etc/apt/sources.list
 apt-get -y update
 
 # Removing leftover leases and persistent rules

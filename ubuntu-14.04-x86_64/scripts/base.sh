@@ -1,7 +1,5 @@
 #!/bin/bash
 
-perl -p -i -e 's#http://us.archive.ubuntu.com/ubuntu#http://ftp.utexas.edu/ubuntu/#gi' /etc/apt/sources.list
-
 # Update the box
 apt-get -y update
 apt-get -y upgrade
