@@ -9,12 +9,12 @@ fi
 
 mkdir -p /mnt/vmware
 mount -o loop /home/vagrant/linux.iso /mnt/vmware
+git clone https://github.com/rasa/vmware-tools-patches.git
+cd vmware-tools-patches
+cp /mnt/vmware/VMwareTools-*.tar.gz .
 
-cd /tmp
-tar xzf /mnt/vmware/VMwareTools-*.tar.gz
+./untar-and-patch.sh
+./compile.sh
 
+rm -rf vmware-tools-patches
 umount /mnt/vmware
-rm -fr /home/vagrant/linux.iso
-
-echo 'yes' | /tmp/vmware-tools-distrib/vmware-install.pl -d
-rm -fr /tmp/vmware-tools-distrib
